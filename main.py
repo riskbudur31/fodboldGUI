@@ -9,7 +9,7 @@ from worstWindow import worstWindowClass
 class mainWindow:
     def __init__(self):
         self.total = 0
-        self.target = 31500
+        self.target = 45000
         self.root = Tk()
 
         self.filename = 'betalinger.pk'

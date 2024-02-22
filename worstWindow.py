@@ -10,8 +10,10 @@ class worstWindowClass:
         self.worstWindow.title("Bottom 3")
         self.worstWindow.geometry("200x200")
 
-        Label(self.worstWindow, text="De værste betalere").pack()
+        Label(self.worstWindow, text="Under arbejde").pack()
 
         ##TODO Error pop up besked
         #TODONE Error popup
         messagebox.showerror("Error", "Hov, denne del er ikke færdig")
+        # en funktion for at finde de specifikke personer
+        # en funktion til at se hvem der har betalt mindst

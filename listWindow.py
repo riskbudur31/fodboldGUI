@@ -16,3 +16,6 @@ class listWindowClass:
         panel = Label(self.listWindow, image=img)
         panel.image = img
         panel.pack(side="bottom", fill="both", expand="yes")
+
+        #TO DO: Her skulle der også laves en strukturetet liste af hvem der havde betalt og hvor meget det havde betalt
+        # Der skulle også være et graf, så man kunne se hvor meget man manglede ud fra en cirkeldiagram
