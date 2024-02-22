@@ -11,6 +11,11 @@ class payWindowClass:
         self.payWindow.geometry("200x200")
 
         Label(self.payWindow,
+              text="Navn").pack()
+        self.money = Entry(self.payWindow)
+        self.money.pack()
+
+        Label(self.payWindow,
               text="Indbetal").pack()
 
         self.money = Entry(self.payWindow)

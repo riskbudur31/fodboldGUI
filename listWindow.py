@@ -10,9 +10,9 @@ class listWindowClass:
         self.listWindow.title("List Window")
         self.listWindow.geometry("500x500")
 
-        Label(self.listWindow, text="Liste over indbetalinger.. eller.. noget der ligner en cylinder").pack()
+        Label(self.listWindow, text="Liste over indbetalinger.. der er lige pt. vejarbejde her").pack()
 
-        img = ImageTk.PhotoImage(Image.open("assets/img/cyl.png"))
+        img = ImageTk.PhotoImage(Image.open("assets/img/vejarbejde1.png"))
         panel = Label(self.listWindow, image=img)
         panel.image = img
         panel.pack(side="bottom", fill="both", expand="yes")
