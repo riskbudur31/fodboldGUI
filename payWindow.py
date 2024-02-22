@@ -1,39 +1,52 @@
-# importing tkinter module
+# payWindow.py
 from tkinter import *
 from tkinter import messagebox
+import pickle
 
 class payWindowClass:
-
     def __init__(self, master):
-        self.master = master #reference til main window objektet
+        self.master = master
         self.payWindow = Toplevel(self.master.root)
         self.payWindow.title("Pay Window")
         self.payWindow.geometry("200x200")
 
-        Label(self.payWindow,
-              text="Navn").pack()
-        self.money = Entry(self.payWindow)
-        self.money.pack()
+        Label(self.payWindow, text="Navn").pack()
+        self.input_name = Entry(self.payWindow)
+        self.input_name.pack()
 
-        Label(self.payWindow,
-              text="Indbetal").pack()
+        Label(self.payWindow, text="Indbetal").pack()
+        self.input_amount = Entry(self.payWindow)
+        self.input_amount.pack()
 
-        self.money = Entry(self.payWindow)
-        self.money.pack()
-
-        self.button = Button(self.payWindow, text="betal", command= self.addMoney)
+        self.button = Button(self.payWindow, text="Betal", command=self.registrer_betaling)
         self.button.pack()
 
-    def addMoney(self):
+    def registrer_betaling(self):
+        member = self.input_name.get()
+        amount = float(self.input_amount.get())
         try:
-            amount = abs(int(self.money.get())) #HUSK AT VALIDERE INPUT!, kun positive heltal!
-        except:
-            messagebox.showerror(parent=self.payWindow , title="Beløb fejl!", message="Prøv igen.\nKun hele tal!")
+            with open('betalinger.pk', 'rb') as file:
+                data = pickle.load(file)
+        except FileNotFoundError:
+            messagebox.showerror("Fejl", "Filen blev ikke fundet!")
+            return
+        except Exception as e:
+            messagebox.showerror("Fejl", f"Der opstod en fejl: {str(e)}")
             return
 
-        self.master.total += amount
-        self.master.progressLabelText.set(f"Indsamlet: {self.master.total} af {self.master.target} kroner:")
-        print(f"Indsamlet: {self.master.total} af {self.master.target} kroner!")
-        self.master.progress['value'] = self.master.total / self.master.target * 100
-        ##TODO: TELL MAIN WINDOW TO PICKLE THE DICTIONARY
-        self.master.gemFilen()
+        if member in data:
+            data[member] += amount
+        else:
+            messagebox.showerror("Fejl", f"Navnet '{member}' findes ikke.")
+            return
+
+        try:
+            with open('betalinger.pk', 'wb') as file:
+                pickle.dump(data, file)
+        except Exception as e:
+            messagebox.showerror("Fejl", f"Der opstod en fejl under skrivning til filen: {str(e)}")
+            return
+
+        messagebox.showinfo("Success", "Betalingsregistrering fuldført.")
+        self.input_name.delete(0, END)
+        self.input_amount.delete(0, END)
