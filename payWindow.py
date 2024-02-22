@@ -9,7 +9,8 @@ class payWindowClass:
         self.payWindow = Toplevel(self.master.root)
         self.payWindow.title("Pay Window")
         self.payWindow.geometry("200x200")
-
+#ToDO navnefunktion
+#todone Navnefunktion
         Label(self.payWindow, text="Navn").pack()
         self.input_name = Entry(self.payWindow)
         self.input_name.pack()
@@ -20,7 +21,10 @@ class payWindowClass:
 
         self.button = Button(self.payWindow, text="Betal", command=self.registrer_betaling)
         self.button.pack()
-
+#ToDo tilføjelse af pickle filen
+#ToDone tilføjelse af pickle filen
+#TODO betallingssystem
+#ToDone betallingssystem
     def registrer_betaling(self):
         member = self.input_name.get()
         amount = float(self.input_amount.get())

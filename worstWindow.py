@@ -15,5 +15,5 @@ class worstWindowClass:
         ##TODO Error pop up besked
         #TODONE Error popup
         messagebox.showerror("Error", "Hov, denne del er ikke færdig")
-        # en funktion for at finde de specifikke personer
-        # en funktion til at se hvem der har betalt mindst
+        #ToDO en funktion for at finde de specifikke personer
+        #ToDO en funktion til at se hvem der har betalt mindst
