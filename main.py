@@ -9,6 +9,7 @@ from listWindow import listWindowClass
 from payWindow import payWindowClass
 from worstWindow import worstWindowClass
 
+# Commit kommentar test fordi jeg er retard
 class mainWindow:
     def __init__(self):
 
